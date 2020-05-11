@@ -1,0 +1,214 @@
+<app-topbar></app-topbar>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <h2 class="text-center display-3 mb-2">Supplier Bill</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <form [formGroup]="userTable">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="supplier">Supplier Name</label>
+              <ng-autocomplete
+                id="supplier"
+                #ngAutoCompleteStatic
+                [data]="suppliers"
+                formControlName="supplier"
+                [initialValue]=""
+                [searchKeyword]="keywordForSuppliers"
+                (selected)="onSelectSupplier($event)"
+                (inputChanged)="onChangeSupplierSearch($event)"
+                [itemTemplate]="itemTemplateStatic2"
+                placeHolder="Supplier"
+              >
+              </ng-autocomplete>
+              <ng-template #itemTemplateStatic2 let-item>
+                <a [innerHTML]="item"></a>
+              </ng-template>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="invoice">Invoice No.</label>
+            <input
+              id="invoice"
+              type="text"
+              class="form-control"
+              formControlName="invoiceNo"
+              placeholder="Invoice Number"
+            />
+          </div>
+        </div>
+        <hr />
+        <table class="table table-border" style="width: 1500px !important;">
+          <thead class="text-nowrap">
+            <th>S.L.</th>
+            <th>Product Name</th>
+            <th>HSN</th>
+            <th>Comp</th>
+            <th>Pack</th>
+            <th>Batch</th>
+            <th>EXP</th>
+            <th>MRP</th>
+            <th>Rate</th>
+            <th>Qty</th>
+            <th>Bonus</th>
+            <th>Trade</th>
+            <th>SGST%</th>
+            <th>CGST%</th>
+            <th>Disc%</th>
+            <th>Amount</th>
+          </thead>
+          <tbody>
+            <ng-container
+              formArrayName="tableRows"
+              *ngFor="let group of getFormControls.controls; let i = index"
+            >
+              <tr [formGroupName]="i">
+                <td>
+                  {{ i + 1 }}
+                </td>
+
+                <td>
+                  <ng-autocomplete
+                    #ngAutoCompleteStatic
+                    [data]="medicines"
+                    formControlName="productName"
+                    [initialValue]=""
+                    [searchKeyword]="keyword"
+                    (selected)="onSelectProduct($event, i)"
+                    (inputChanged)="onChangeSearch($event)"
+                    [itemTemplate]="itemTemplateStatic"
+                    matInput
+                  >
+                  </ng-autocomplete>
+
+                  <ng-template #itemTemplateStatic let-item>
+                    <a [innerHTML]="item"></a>
+                  </ng-template>
+                </td>
+                <td>
+                  <mat-form-field style="width: 40px !important;">
+                    <input matInput type="text" formControlName="hsn" />
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field style="width: 60px !important;">
+                    <input matInput type="text" formControlName="company" />
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field style="width: 60px !important;">
+                    <input matInput type="text" formControlName="pack" />
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field style="width: 65px !important;">
+                    <input matInput type="text" formControlName="batch" />
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field style="width: 50px !important;">
+                    <input matInput type="text" formControlName="exp" />
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field style="width: 60px !important;">
+                    <input matInput type="text" formControlName="mrp" />
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field style="width: 60px !important;">
+                    <input matInput type="text" formControlName="rate" />
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field style="width: 50px !important;">
+                    <input matInput type="text" formControlName="quantity" />
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field style="width: 40px !important;">
+                    <input matInput type="text" formControlName="bonus" />
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field style="width: 60px !important;">
+                    <input matInput type="text" formControlName="trade" />
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field style="width: 30px !important;">
+                    <input matInput type="text" formControlName="sgst" />
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field style="width: 30px !important;">
+                    <input matInput type="text" formControlName="cgst" />
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field style="width: 30px !important;">
+                    <input matInput type="text" formControlName="discount" />
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field style="width: 50px !important;">
+                    <input matInput type="text" formControlName="amount" />
+                  </mat-form-field>
+                </td>
+                <td>
+                  <input
+                    *ngIf="getFormControls.controls.length === i + 1"
+                    class="btn btn-primary"
+                    type="button"
+                    mat-raised-button
+                    (click)="addNewItem()"
+                    value="New Item"
+                  />
+                </td>
+                <td>
+                  <mat-icon class="delete" (click)="deleteRow(i)"
+                    >delete_forever</mat-icon
+                  >
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+        <div class="action-container">
+          <button
+            mat-raised-button
+            [disabled]="userTable.invalid"
+            type="submit"
+            (click)="submitForm()"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10"></div>
+    <div class="col-md-2">
+      <div class="row">
+        <div class="col-md-6">
+          <strong>Total</strong>
+        </div>
+        <div class="col-md-6">
+          <strong>{{ totalAmount }}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="output">
+  <p>Form Data: {{ userTable.value | json }}</p>
+  <p>Is Valid: {{ userTable.valid }}</p>
+</div>

@@ -1,0 +1,103 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="" routerLink="/dashboard">Govind Pharma</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href=""
+          >Home <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="billDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Bill
+        </a>
+        <div class="dropdown-menu" aria-labelledby="billDropdown">
+          <a class="dropdown-item" href="" routerLink="/billing"
+            >New Invoice Bill</a
+          >
+          <a class="dropdown-item" href="" routerLink="/billing"
+            >New Estimate Bill</a
+          >
+          <a class="dropdown-item" href="" routerLink="/addRetailCustomer"
+            >Add Retail Customers</a
+          >
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="" routerLink="/register"
+            >Register Admin</a
+          >
+          <a class="dropdown-item" href="" routerLink="/addMedicine"
+            >Add Medicine</a
+          >
+          <a class="dropdown-item" href="" routerLink="/addSupplier"
+            >Add Supplier</a
+          >
+          <a class="dropdown-item" href="" routerLink="/addSupplierBill"
+            >Add Supplier Bill</a
+          >
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <!-- <a (click)="this.auth.logout()" class="collapse-item mt-3" href=""
+          >Log Out</a
+        > -->
+      </li>
+    </ul>
+    <form (submit)="logout()" class="form-inline my-2 my-lg-0">
+      <!-- <input
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Search
+      </button> -->
+      <!-- <a (click)="this.auth.logout()" class="collapse-item mt-3" href=""
+        >Log Out</a
+      > -->
+      <input type="submit" value="Log Out" class="btn" />
+    </form>
+  </div>
+</nav>

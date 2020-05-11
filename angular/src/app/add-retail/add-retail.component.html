@@ -1,0 +1,157 @@
+<app-topbar></app-topbar>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 justify-content-center">
+      <h1 class="text-center display-5 mt-3">
+        Add Retail Customer
+      </h1>
+      <div *ngIf="formError" class="alert alert-primary text-primary mb-5">
+        {{ formError }}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <form class="register-form user mt-5" (submit)="formSubmit()">
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="shop_name"
+              placeholder="Shop Name"
+              name="shop_name"
+              [(ngModel)]="retailShop.shopName"
+            />
+          </div>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="owner_name"
+              placeholder="Owner Name"
+              name="owner_name"
+              [(ngModel)]="retailShop.ownerName"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <input
+              type="email"
+              class="form-control form-control-user"
+              id="email"
+              placeholder="Email Address"
+              name="email"
+              [(ngModel)]="retailShop.email"
+            />
+          </div>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="adhar"
+              placeholder="Adhar No."
+              name="adhar"
+              [(ngModel)]="retailShop.adharNo"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="address"
+              placeholder="Address"
+              name="address"
+              [(ngModel)]="retailShop.address"
+            />
+          </div>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="city"
+              placeholder="City"
+              name="city"
+              [(ngModel)]="retailShop.city"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="drug_lic"
+              placeholder="Drug Lic."
+              name="drug_lic"
+              [(ngModel)]="retailShop.drugLic"
+            />
+          </div>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="pan"
+              placeholder="PAN Number"
+              name="pan"
+              [(ngModel)]="retailShop.panNo"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="gstin"
+              placeholder="GSTIN"
+              name="gstin"
+              [(ngModel)]="retailShop.gstin"
+            />
+          </div>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="foodLic"
+              placeholder="Food Lic."
+              name="foodLic"
+              [(ngModel)]="retailShop.foodLic"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="cellno"
+              placeholder="Phone Number"
+              name="cellno"
+              [(ngModel)]="retailShop.cellNo"
+            />
+          </div>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="cellNo2"
+              placeholder="Secondary Phone Number "
+              name="cell2"
+              [(ngModel)]="retailShop.cellNo2"
+            />
+          </div>
+        </div>
+        <input
+          type="submit"
+          class="btn btn-primary btn-user btn-block"
+          value="Register an account"
+        />
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,168 @@
+<app-topbar></app-topbar>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 justify-content-center">
+      <h3 class="text-center display-5 mt-3">
+        Billing
+      </h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <form class="user mt-5" (submit)="formSubmit()">
+        <hr />
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <form class="example-form">
+              <input
+                type="text"
+                placeholder="Search for a street"
+                [formControl]="control"
+                [matAutocomplete]="auto"
+                class="form-control"
+              />
+              <mat-autocomplete
+                #auto="matAutocomplete"
+                (optionSelected)="onSelectShop($event)"
+              >
+                <mat-option
+                  *ngFor="let street of filteredStreets | async"
+                  [value]="street"
+                >
+                  {{ street }}
+                </mat-option>
+              </mat-autocomplete>
+            </form>
+          </div>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="invoice_date"
+              placeholder="Date"
+              name="invoice_date"
+              [(ngModel)]="bill.invoiceDate"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="address"
+              placeholder="Address"
+              name="address"
+              [(ngModel)]="bill.address"
+            />
+          </div>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="invoice_no"
+              placeholder="Invoice No."
+              name="invoice_no"
+              [(ngModel)]="bill.invoiceNo"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="city"
+              placeholder="City"
+              name="city"
+              [(ngModel)]="bill.city"
+            />
+          </div>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="place_of_supply"
+              placeholder="Place of supply"
+              name="place_of_supply"
+              [(ngModel)]="bill.placeOfSupply"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="gstin"
+              placeholder="GSTIN"
+              name="gstin"
+              [(ngModel)]="bill.gstin"
+            />
+          </div>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="panNo"
+              placeholder="PAN No"
+              name="panNo"
+              [(ngModel)]="bill.panNo"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="drugLic"
+              placeholder="Drug Lic"
+              name="drugLic"
+              [(ngModel)]="bill.drugLic"
+            />
+          </div>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="phone"
+              placeholder="Phone"
+              name="phone"
+              [(ngModel)]="bill.phone"
+            />
+          </div>
+        </div>
+        <hr />
+        <!-- ITEMS -->
+        <!-- <div class="row">
+          <div class="col">
+            <table class="table" style="font-size: 15px;">
+              <thead>
+                <tr>
+                  <th scope="col">SL.</th>
+                  <th scope="col">Prod Desc</th>
+                  <th scope="col">Pack</th>
+                  <th scope="col">Com/Mfg</th>
+                  <th scope="col">HSN</th>
+                  <th scope="col">Batch No</th>
+                  <th scope="col">Exp</th>
+                  <th scope="col">Qty+Free</th>
+                  <th scope="col">MRP</th>
+                  <th scope="col">Rate</th>
+                  <th scope="col">Disc %</th>
+                  <th scope="col">CGST</th>
+                  <th scope="col">SGST</th>
+                  <th scope="col">Total</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div> -->
+        <input type="submit" value="Submit" class="form-control" />
+      </form>
+    </div>
+  </div>
+</div>

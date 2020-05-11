@@ -1,0 +1,107 @@
+<app-topbar></app-topbar>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <form class="register-form user mt-5" (submit)="formSubmit()">
+        <h2 class="text-center display-3 mb-5">Add New Admin</h2>
+        <div *ngIf="formError" class="alert alert-primary text-primary mb-5">
+          {{ formError }}
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="exampleFirstName"
+              placeholder="First Name"
+              name="first_name"
+              [(ngModel)]="newAdmin.firstName"
+            />
+          </div>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="exampleLastName"
+              placeholder="Last Name"
+              name="last_name"
+              [(ngModel)]="newAdmin.lastName"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <input
+              type="email"
+              class="form-control form-control-user"
+              id="exampleInputEmail"
+              placeholder="Email Address"
+              name="email"
+              [(ngModel)]="newAdmin.email"
+            />
+          </div>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="address"
+              placeholder="Address"
+              name="address"
+              [(ngModel)]="newAdmin.address"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="phone"
+              placeholder="Phone No."
+              name="phone"
+              [(ngModel)]="newAdmin.phone"
+            />
+          </div>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="adhar"
+              placeholder="Adhar No."
+              name="adhar"
+              [(ngModel)]="newAdmin.adharNo"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <input
+              type="password"
+              class="form-control form-control-user"
+              id="exampleInputPassword"
+              placeholder="Password"
+              name="password"
+              [(ngModel)]="newAdmin.password"
+            />
+          </div>
+          <div class="col-sm-6">
+            <input
+              type="password"
+              class="form-control form-control-user"
+              id="exampleRepeatPassword"
+              placeholder="Confirm Password"
+              name="password_confirm"
+              [(ngModel)]="newAdmin.password2"
+            />
+          </div>
+        </div>
+        <input
+          type="submit"
+          class="btn btn-primary btn-user btn-block"
+          value="Register Admin"
+        />
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,168 @@
+<app-topbar></app-topbar>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 justify-content-center">
+      <h1 class="text-center display-5 mt-1">
+        Add Supplier
+      </h1>
+      <div *ngIf="formError" class="alert alert-primary text-primary mb-5">
+        {{ formError }}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <form class="register-form user mt-1" (submit)="formSubmit()">
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <label for="supplier_name">Supplier</label>
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="supplier_name"
+              placeholder="*Supplier"
+              name="supplier_name"
+              [(ngModel)]="newSupplier.supplierName"
+            />
+          </div>
+          <div class="col-sm-6">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control form-control-user"
+              id="email"
+              placeholder="Email"
+              name="email"
+              [(ngModel)]="newSupplier.email"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <label for="gsttin">GSTTIN</label>
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="gsttin"
+              placeholder="GSTTIN"
+              name="gsttin"
+              [(ngModel)]="newSupplier.gsttin"
+            />
+          </div>
+          <div class="col-sm-6">
+            <label for="pan_no">PAN No.</label>
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="pan_no"
+              placeholder="PAN No."
+              name="pan_no"
+              [(ngModel)]="newSupplier.panNo"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <label for="drug_licence">Drug Licence</label>
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="drug_licence"
+              placeholder="*Drug licence"
+              name="drug_licence"
+              [(ngModel)]="newSupplier.drugLic"
+            />
+          </div>
+          <div class="col-sm-6">
+            <label for="address">Address</label>
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="address"
+              placeholder="*Address"
+              name="address"
+              [(ngModel)]="newSupplier.address"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <label for="city">City</label>
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="city"
+              placeholder="*City"
+              name="city"
+              [(ngModel)]="newSupplier.city"
+            />
+          </div>
+          <div class="col-sm-6">
+            <label for="state">State</label>
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="state"
+              placeholder="State"
+              name="state"
+              [(ngModel)]="newSupplier.state"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <label for="country">Country</label>
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="country"
+              placeholder="Country"
+              name="country"
+              [(ngModel)]="newSupplier.country"
+            />
+          </div>
+          <div class="col-sm-6">
+            <label for="pin">PIN</label>
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="pin"
+              placeholder="PIN"
+              name="pin"
+              [(ngModel)]="newSupplier.pin"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <label for="cellNo">Phone Number</label>
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="cellno"
+              placeholder="*Phone Number"
+              name="cellno"
+              [(ngModel)]="newSupplier.cellNo"
+            />
+          </div>
+          <div class="col-sm-6">
+            <label for="cellNo2">Secondary Phone Number</label>
+            <input
+              type="text"
+              class="form-control form-control-user"
+              id="cellNo2"
+              placeholder="Secondary Phone Number "
+              name="cell2"
+              [(ngModel)]="newSupplier.cellNo2"
+            />
+          </div>
+        </div>
+        <input
+          type="submit"
+          class="btn btn-primary btn-user btn-block"
+          value="Register an account"
+        />
+      </form>
+    </div>
+  </div>
+</div>
