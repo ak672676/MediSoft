@@ -15,11 +15,11 @@ const registerAdmin = (req, res) => {
       return res.status(400).json({ message: "Email already exist" });
     } else {
       const newAdmin = new Admin({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
+        firstName: req.body.firstName.toUpperCase(),
+        lastName: req.body.lastName.toUpperCase(),
         email: req.body.email,
         adharNo: req.body.adharNo,
-        address: req.body.address,
+        address: req.body.address.toUpperCase(),
         phone: req.body.phone,
         password: req.body.password,
       });

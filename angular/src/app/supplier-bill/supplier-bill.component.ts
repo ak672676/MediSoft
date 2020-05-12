@@ -110,16 +110,22 @@ export class SupplierBillComponent implements OnInit {
   }
 
   submitForm() {
-    // const control = this.userTable.get("tableRows") as FormArray;
-    // this.touchedRows = control.controls
-    //   .filter((row) => row.touched)
-    //   .map((row) => row.value);
-    // console.log(this.touchedRows);
-    console.log(this.userTable.value);
     this.userTable.value.total = this.totalAmount;
+    this.userTable.value.invoiceNo = this.userTable.value.invoiceNo.toUpperCase();
+    for (let a of this.userTable.value.tableRows) {
+      a.productName = a.productName.toUpperCase();
+      a.company = a.company.toUpperCase();
+      a.pack = a.pack.toUpperCase();
+      a.batch = a.batch.toUpperCase();
+    }
+
     this.supplier.addSupplierBill(this.userTable.value).subscribe(
-      (val) => {
+      (val: any) => {
         console.log(val);
+        if (val.success) {
+          console.log("AMIT");
+          this.router.navigate(["/dashboard"]);
+        }
       },
       (err) => {
         console.log(err);

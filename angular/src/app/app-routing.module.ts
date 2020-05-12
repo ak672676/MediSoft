@@ -11,7 +11,8 @@ import { RegisterComponent } from "./register/register.component";
 import { AddMedicineComponent } from "./add-medicine/add-medicine.component";
 import { AddSupplierComponent } from "./add-supplier/add-supplier.component";
 import { SupplierBillComponent } from "./supplier-bill/supplier-bill.component";
-
+import { SupplierBillViewComponent } from "./supplier-bill-view/supplier-bill-view.component";
+import { SearchSupplierBillComponent } from "./search-supplier-bill/search-supplier-bill.component";
 const routes: Routes = [
   {
     path: "",
@@ -62,6 +63,18 @@ const routes: Routes = [
   {
     path: "addSupplierBill",
     component: SupplierBillComponent,
+    canActivate: [AuthService],
+    data: { loggedIn: true },
+  },
+  {
+    path: "bill/searchSupplier",
+    component: SearchSupplierBillComponent,
+    canActivate: [AuthService],
+    data: { loggedIn: true },
+  },
+  {
+    path: "supplierBill/:id",
+    component: SupplierBillViewComponent,
     canActivate: [AuthService],
     data: { loggedIn: true },
   },

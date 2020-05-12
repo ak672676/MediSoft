@@ -26,6 +26,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AddMedicineComponent } from "./add-medicine/add-medicine.component";
 import { AddSupplierComponent } from "./add-supplier/add-supplier.component";
 import { SupplierBillComponent } from "./supplier-bill/supplier-bill.component";
+import { SupplierBillViewComponent } from "./supplier-bill-view/supplier-bill-view.component";
+import { SearchSupplierBillComponent } from './search-supplier-bill/search-supplier-bill.component';
+import { SupplierBillListComponent } from './supplier-bill-list/supplier-bill-list.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { SupplierBillComponent } from "./supplier-bill/supplier-bill.component";
     AddSupplierComponent,
     SupplierBillComponent,
     InputAutocompleteComponent,
+    SupplierBillViewComponent,
+    SearchSupplierBillComponent,
+    SupplierBillListComponent,
   ],
   imports: [
     BrowserModule,

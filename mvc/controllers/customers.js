@@ -1,7 +1,6 @@
 const Customer = require("../models/customer");
 
 const addCustomer = (req, res) => {
-  console.log(req.body);
   Customer.findOne({ drugLic: req.body.drugLic }).then((customer) => {
     if (customer) {
       return res
@@ -9,11 +8,11 @@ const addCustomer = (req, res) => {
         .json({ message: "Customer of this drugLic already exist." });
     }
     const newCustomer = new Customer({
-      shopName: req.body.shopName,
-      ownerName: req.body.ownerName,
+      shopName: req.body.shopName.toUpperCase(),
+      ownerName: req.body.ownerName.toUpperCase(),
       email: req.body.email,
-      address: req.body.address,
-      city: req.body.city,
+      address: req.body.address.toUpperCase(),
+      city: req.body.city.toUpperCase(),
       foodLic: req.body.foodLic,
       panNo: req.body.panNo,
       gstin: req.body.gstin,
@@ -33,7 +32,7 @@ const addCustomer = (req, res) => {
     });
   });
 };
-// { phone: { $regex: /req.params.phone/ }
+
 const getCustomerByName = (req, res) => {
   Customer.find({
     shopName: { $regex: req.params.customerName, $options: "i" },

@@ -1,0 +1,99 @@
+<app-topbar></app-topbar>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col text-center">
+      <h3 class="display-5 mt-2">Supplier Bill</h3>
+    </div>
+  </div>
+  <div class="row mt-5" *ngIf="loading && !billFound">
+    <div class="col text-center">
+      <div
+        class="spinner-grow"
+        style="width: 10rem; height: 10rem;"
+        role="status"
+      >
+        <span class="sr-only">Loading...</span>
+      </div>
+      <h5>Loading</h5>
+    </div>
+  </div>
+  <div class="row mt-5" *ngIf="!billFound && !loading">
+    <div class="col text-center">
+      <h1 class="display-1 mt-3">Could not find the bill</h1>
+    </div>
+  </div>
+
+  <div class="container-fluid" *ngIf="!loading && billFound">
+    <hr />
+    <div class="row display-5">
+      <div class="col-md-10">
+        <div>
+          <strong>Supplier :</strong><span> {{ this.bill.supplier }}</span>
+        </div>
+        <div>
+          <strong>Invoice No. :</strong><span> {{ this.bill.invoiceNo }}</span>
+        </div>
+      </div>
+      <div class="col-md-2" style="display: inline;">
+        <strong>Date :</strong><span> {{ this.bill.date.split("T")[0] }}</span>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">SL</th>
+              <th scope="col">Product</th>
+              <th scope="col">HSN</th>
+              <th scope="col">Comp</th>
+              <th scope="col">Pack</th>
+              <th scope="col">Batch</th>
+              <th scope="col">MRP</th>
+              <th scope="col">EXP</th>
+              <th scope="col">Rate</th>
+              <th scope="col">Trade</th>
+              <th scope="col">Bonus</th>
+              <th scope="col">Qty</th>
+              <th scope="col">CGST</th>
+              <th scope="col">SGST</th>
+              <th scope="col">Disc</th>
+              <th scope="col">Amt</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of bill.items; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ item.productName }}</td>
+              <td>{{ item.hsn }}</td>
+              <td>{{ item.company }}</td>
+              <td>{{ item.pack }}</td>
+              <td>{{ item.batch }}</td>
+              <td>{{ item.mrp }}</td>
+              <td>
+                {{
+                  item.exp.split("T")[0].split("-")[1] +
+                    "/" +
+                    item.exp.split("T")[0].split("-")[0]
+                }}
+              </td>
+              <td>{{ item.rate }}</td>
+              <td>{{ item.trade }}</td>
+              <td>{{ item.bonus }}</td>
+              <td>{{ item.quantity }}</td>
+              <td>{{ item.sgst }}</td>
+              <td>{{ item.cgst }}</td>
+              <td>{{ item.discount }}</td>
+              <td>{{ item.amount }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
+        <div class="float-right">
+          <strong>Total :</strong><span> {{ this.bill.total }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

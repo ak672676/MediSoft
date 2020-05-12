@@ -1,0 +1,42 @@
+<app-topbar></app-topbar>
+<div class="container-fluid" style="height: 100vh;">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="row mt-3">
+        <div class="col">
+          <h4 class="display-4 text-center">Search Supplier</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <form autocomplete="off" novalidate [formGroup]="searchingForm">
+              <label for="supplier">Supplier Name</label>
+              <ng-autocomplete
+                id="supplier"
+                #ngAutoCompleteStatic
+                [data]="suppliers"
+                formControlName="supplier"
+                [initialValue]=""
+                [searchKeyword]="keywordForSuppliers"
+                (selected)="onSelectSupplier($event)"
+                (inputChanged)="onChangeSupplierSearch($event)"
+                [itemTemplate]="itemTemplateStatic2"
+                placeHolder="Supplier"
+              >
+              </ng-autocomplete>
+              <ng-template #itemTemplateStatic2 let-item>
+                <a [innerHTML]="item"></a>
+              </ng-template>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <app-supplier-bill-list
+        [supplier]="selectedSupplier"
+      ></app-supplier-bill-list>
+    </div>
+  </div>
+</div>

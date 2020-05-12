@@ -23,4 +23,6 @@ router.post(
   supplierCtrl.addBill
 );
 
+router.get("/bill/:id", supplierCtrl.getSupplierBill);
+
 module.exports = router;

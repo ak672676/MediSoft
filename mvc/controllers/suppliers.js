@@ -1,6 +1,7 @@
 const Supplier = require("../models/supplier");
 const Medicine = require("../models/medicine");
 const SupplierBill = require("../models/supplierBill");
+
 const addSupplier = (req, res) => {
   console.log(req.body);
   Supplier.findOne({ drugLic: req.body.drugLic }).then((supplier) => {
@@ -22,6 +23,7 @@ const addSupplier = (req, res) => {
       cellNo: req.body.cellNo,
       cellNo2: req.body.cellNo2,
       panNo: req.body.panNo,
+      bills: [],
     });
 
     newSupplier.save((err, supplier) => {
@@ -40,7 +42,7 @@ const searchSupplier = (req, res) => {
     {
       supplierName: { $regex: req.params.supplier, $options: "i" },
     },
-    "supplierName _id city"
+    "supplierName _id city bills"
   ).then((suppliers) => {
     if (suppliers.length == 0) {
       return res.status(200).json({ suppliers: [] });
@@ -50,7 +52,6 @@ const searchSupplier = (req, res) => {
 };
 
 const addBill = async (req, res) => {
-  // console.log(req.body);
   for (a of req.body.tableRows) {
     await Medicine.findOne({ productName: a.productName.toUpperCase() }).then(
       (med) => {
@@ -75,7 +76,6 @@ const addBill = async (req, res) => {
         };
 
         if (!med) {
-          console.log("111");
           const newProduct = new Medicine({
             productName: a.productName.toUpperCase(),
             company: a.company.toUpperCase(),
@@ -109,9 +109,9 @@ const addBill = async (req, res) => {
   }
 
   const newBill = new SupplierBill({
-    supplier: req.body.supplier,
+    supplier: req.body.supplier.toUpperCase(),
     supplierId: req.body.supplierId,
-    invoiceNo: req.body.invoiceNo,
+    invoiceNo: req.body.invoiceNo.toUpperCase(),
     total: req.body.total,
     items: req.body.tableRows,
   });
@@ -121,7 +121,7 @@ const addBill = async (req, res) => {
     Supplier.findOne({ _id: req.body.supplierId }).then((supplier) => {
       const billToSupplier = {
         billId: bill._id,
-        invoiceNumber: req.body.invoiceNo,
+        invoiceNumber: req.body.invoiceNo.toUpperCase(),
         amount: req.body.total,
         date: new Date(),
       };
@@ -131,9 +131,26 @@ const addBill = async (req, res) => {
       }
       supplier.bills.push(billToSupplier);
       supplier.save((err, supplier) => {
-        return res.status(201).json({ message: "Success bill saved" });
+        return res
+          .status(201)
+          .json({ success: true, message: "Success bill saved" });
       });
     });
   });
 };
-module.exports = { addSupplier, searchSupplier, addBill };
+
+const getSupplierBill = (req, res) => {
+  console.log(req.params.id);
+  SupplierBill.findById(req.params.id)
+    .then((bill) => {
+      if (!bill) {
+        return res.status(404).json({ message: "Not found" });
+      }
+      res.status(200).json({ bill: bill });
+    })
+    .catch((err) => {
+      return res.status(404).json({ message: "Not found" });
+    });
+};
+
+module.exports = { addSupplier, searchSupplier, addBill, getSupplierBill };

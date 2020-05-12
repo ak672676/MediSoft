@@ -1,7 +1,6 @@
 const Medicine = require("../models/medicine");
 
 const addMedicine = (req, res) => {
-  // console.log(req.body);
   Medicine.findOne({ productName: req.body.productName.toUpperCase() })
     .then((product) => {
       if (product)
